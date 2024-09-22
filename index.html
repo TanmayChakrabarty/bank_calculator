@@ -20,6 +20,7 @@
                 width: 100% !important; /* Ensure the row takes full width */
             }
         }
+        .input-group-text{ width: 40px; text-align: center}
     </style>
 </head>
 <body>
@@ -28,86 +29,94 @@
             <div class="col-sm-4 print-hide">
                 <h1>Configuration</h1>
                 <hr/>
-                <div class="row mb-2">
-                    <label class="col-sm-6">Company Name</label>
-                    <div class="col-sm-6"><input type="text" class="form-control" id="company_name" placeholder=""/></div>
-                </div>
-                <div class="row mb-2">
-                    <label class="col-sm-6">Account Number</label>
-                    <div class="col-sm-6"><input type="text" class="form-control" id="account_number" placeholder=""/></div>
-                </div>
-                <div class="row mb-2">
-                    <label class="col-sm-6">TT Amount</label>
-                    <div class="col-sm-6">
-                        <div class="input-group">
-                            <input type="text" class="form-control" id="tt_amount" placeholder=""/>
-                            <span class="input-group-text">&#36;</span>
+                <form onsubmit="return false;">
+                    <div class="row mb-2">
+                        <label class="col-sm-6">Company Name</label>
+                        <div class="col-sm-6"><input type="text" class="form-control" id="company_name" placeholder=""/></div>
+                    </div>
+                    <div class="row mb-2">
+                        <label class="col-sm-6">Account Number</label>
+                        <div class="col-sm-6"><input type="text" class="form-control" id="account_number" placeholder=""/></div>
+                    </div>
+                    <div class="row mb-2">
+                        <label class="col-sm-6">TT Amount</label>
+                        <div class="col-sm-6">
+                            <div class="input-group">
+                                <span class="input-group-text">&#36;</span>
+                                <input type="text" class="form-control" id="tt_amount" placeholder=""/>
+                            </div>
                         </div>
                     </div>
-                </div>
-                <div class="row mb-2">
-                    <label class="col-sm-6">TT Clean Rate</label>
-                    <div class="col-sm-6">
-                        <div class="input-group">
-                            <input type="text" class="form-control" id="tt_clean_rate" placeholder=""/>
-                            <span class="input-group-text">&#x09F3;</span>
+                    <div class="row mb-2">
+                        <label class="col-sm-6">TT Clean Rate</label>
+                        <div class="col-sm-6">
+                            <div class="input-group">
+                                <span class="input-group-text">&#x09F3;</span>
+                                <input type="text" class="form-control" id="tt_clean_rate" placeholder=""/>
+                            </div>
                         </div>
                     </div>
-                </div>
-                <div class="row mb-2">
-                    <label class="col-sm-6">TT Doc Rate</label>
-                    <div class="col-sm-6">
-                        <div class="input-group">
-                            <input type="text" class="form-control" id="tt_doc_rate" placeholder=""/>
-                            <span class="input-group-text">&#x09F3;</span>
+                    <div class="row mb-2">
+                        <label class="col-sm-6">TT Doc Rate</label>
+                        <div class="col-sm-6">
+                            <div class="input-group">
+                                <span class="input-group-text">&#x09F3;</span>
+                                <input type="text" class="form-control" id="tt_doc_rate" placeholder=""/>
+                            </div>
                         </div>
                     </div>
-                </div>
-                <div class="row mb-2">
-                    <label class="col-sm-6">Source Tax Percentage</label>
-                    <div class="col-sm-6">
-                        <div class="input-group">
-                            <input type="text" class="form-control" id="source_tax_percentage" placeholder="" value="1"/>
-                            <span class="input-group-text">%</span>
+                    <div class="row mb-2">
+                        <label class="col-sm-6">Source Tax Percentage</label>
+                        <div class="col-sm-6">
+                            <div class="input-group">
+                                <span class="input-group-text">%</span>
+                                <input type="text" class="form-control" id="source_tax_percentage" placeholder="" value="1"/>
+                            </div>
                         </div>
                     </div>
-                </div>
-                <div class="row mb-2">
-                    <label class="col-sm-6">Commission</label>
-                    <div class="col-sm-6">
-                        <div class="input-group">
-                            <input type="text" class="form-control" id="commission_amount" placeholder="" value="500"/>
-                            <span class="input-group-text">&#x09F3;</span>
+                    <div class="row mb-2">
+                        <label class="col-sm-6">Commission</label>
+                        <div class="col-sm-6">
+                            <div class="input-group">
+                                <span class="input-group-text">&#x09F3;</span>
+                                <input type="text" class="form-control" id="commission_amount" placeholder="" value="500"/>
+                            </div>
                         </div>
                     </div>
-                </div>
-                <div class="row mb-2">
-                    <label class="col-sm-6">VAT</label>
-                    <div class="col-sm-6">
-                        <div class="input-group">
-                            <input type="text" class="form-control" id="vat" placeholder="" value="75"/>
-                            <span class="input-group-text">&#x09F3;</span>
+                    <div class="row mb-2">
+                        <label class="col-sm-6">VAT</label>
+                        <div class="col-sm-6">
+                            <div class="input-group">
+                                <span class="input-group-text">&#x09F3;</span>
+                                <input type="text" class="form-control" id="vat" placeholder="" value="75"/>
+                            </div>
                         </div>
                     </div>
-                </div>
-                <div class="row mb-2">
-                    <label class="col-sm-6">Fund 1</label>
-                    <div class="col-sm-6">
-                        <div class="input-group">
-                            <input type="text" class="form-control" id="fund_1_percentage" placeholder="" value=".03"/>
-                            <span class="input-group-text">%</span>
+                    <div class="row mb-2">
+                        <label class="col-sm-6">Fund 1</label>
+                        <div class="col-sm-6">
+                            <div class="input-group">
+                                <span class="input-group-text">%</span>
+                                <input type="text" class="form-control" id="fund_1_percentage" placeholder="" value=".03"/>
+                            </div>
                         </div>
                     </div>
-                </div>
-                <div class="row mb-2">
-                    <label class="col-sm-6">Fund 2</label>
-                    <div class="col-sm-6">
-                        <div class="input-group">
-                            <input type="text" class="form-control" id="fund_2_percentage" placeholder="" value="3"/>
-                            <span class="input-group-text">%</span>
+                    <div class="row mb-2">
+                        <label class="col-sm-6">Fund 2</label>
+                        <div class="col-sm-6">
+                            <div class="input-group">
+                                <span class="input-group-text">%</span>
+                                <input type="text" class="form-control" id="fund_2_percentage" placeholder="" value="3"/>
+                            </div>
                         </div>
                     </div>
-                </div>
+                    <div class="row mb-2">
+                        <label class="col-sm-6"></label>
+                        <div class="col-sm-6">
+                            <button type="reset" class="btn btn-warning">Reset</button>
+                        </div>
+                    </div>
+                </form>
             </div>
             <div class="col-sm-8 print-show">
                 <div class="print-hide">
@@ -127,6 +136,10 @@
                     <div class="mb-2"><span id="fund_2_percentage_txt"></span>% Fund = <span id="fund_2_amount_txt"></span>&#x09F3;</div>
                     <div class="mb-2">Exchange gain = <span id="exchange_gain_txt"></span>&#x09F3;</div>
                     <div class="mb-2">A/C = <span id="ac_amount_txt"></span>&#x09F3;</div>
+                </div>
+                <div class="print-hide">
+                    <a href="javascript:" onclick="window.print()" class="btn btn-success">Print</a>
+                    <a href="javascript:" id="recalculate" class="btn btn-primary">Re-calculate</a>
                 </div>
             </div>
         </div>
@@ -192,8 +205,10 @@
 
         $date_txt.text(formatDate('dd-mm-yyyy'));
 
-        $('input').on('keyup change', function(){
+        $('input').on('keyup change', function(){ calculate(); });
+        $('#recalculate').on('click', function(){ calculate(); });
 
+        function calculate(){
             tt_amount = parseFloat($tt_amount.val());
             tt_clean_rate = parseFloat($tt_clean_rate.val());
             tt_doc_rate = parseFloat($tt_doc_rate.val());
@@ -208,23 +223,23 @@
             $tt_amount_txt.text($tt_amount.val());
             $tt_clean_rate_txt.text($tt_clean_rate.val());
 
-            tt_amount_x_clean_rate = tt_amount*tt_clean_rate;
-            tt_amount_x_doc_rate = tt_amount*tt_doc_rate;
+            tt_amount_x_clean_rate = (tt_amount*tt_clean_rate).toFixed(2);
+            tt_amount_x_doc_rate = (tt_amount*tt_doc_rate).toFixed(2);
 
             exchange_gain = tt_amount_x_clean_rate - tt_amount_x_doc_rate;
 
-            source_tax_amount = (source_tax_percentage/100)*tt_amount_x_clean_rate;
+            source_tax_amount = ((source_tax_percentage/100)*tt_amount_x_clean_rate).toFixed(2);
 
-            fund_1_amount = ((fund_1_percentage/100)*tt_amount)*tt_doc_rate;
-            fund_2_amount = ((fund_2_percentage/100)*tt_amount)*tt_doc_rate;
+            fund_1_amount = (((fund_1_percentage/100)*tt_amount).toFixed(2)*tt_doc_rate).toFixed(2);
+            fund_2_amount = (((fund_2_percentage/100)*tt_amount).toFixed(2)*tt_doc_rate).toFixed(2);
 
-            ac_amount = tt_amount_x_clean_rate
-                        - source_tax_amount
-                        - commission_amount
-                        - vat
-                        - fund_1_amount
-                        - fund_2_amount
-                        - exchange_gain;
+            ac_amount = (tt_amount_x_clean_rate
+                - source_tax_amount
+                - commission_amount
+                - vat
+                - fund_1_amount
+                - fund_2_amount
+                - exchange_gain).toFixed(2);
 
             $tt_amount_x_clean_rate_txt.text(tt_amount_x_clean_rate);
             $source_tax_percentage_txt.text($source_tax_percentage.val());
@@ -237,7 +252,7 @@
             $fund_2_amount_txt.text(fund_2_amount);
             $exchange_gain_txt.text(exchange_gain);
             $ac_amount_txt.text(ac_amount);
-        });
+        }
     </script>
 </body>
 </html>
