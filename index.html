@@ -29,7 +29,7 @@
             <div class="col-sm-4 print-hide">
                 <h1>Configuration</h1>
                 <hr/>
-                <form onsubmit="return false;">
+                <form id="config_form" onsubmit="return false;">
                     <div class="row mb-2">
                         <label class="col-sm-6">Company Name</label>
                         <div class="col-sm-6"><input type="text" class="form-control" id="company_name" placeholder=""/></div>
@@ -111,6 +111,24 @@
                         </div>
                     </div>
                     <div class="row mb-2">
+                        <label class="col-sm-6">TF Number</label>
+                        <div class="col-sm-6">
+                            <input type="text" class="form-control" id="tf_number" placeholder="" value=""/>
+                        </div>
+                    </div>
+                    <div class="row mb-2">
+                        <label class="col-sm-6">FTT</label>
+                        <div class="col-sm-6">
+                            <input type="text" class="form-control" id="ftt_number" placeholder="" value=""/>
+                        </div>
+                    </div>
+                    <div class="row mb-2">
+                        <label class="col-sm-6">FE</label>
+                        <div class="col-sm-6">
+                            <input type="text" class="form-control" id="fe_number" placeholder="" value=""/>
+                        </div>
+                    </div>
+                    <div class="row mb-2">
                         <label class="col-sm-6"></label>
                         <div class="col-sm-6">
                             <button type="reset" class="btn btn-warning">Reset</button>
@@ -123,11 +141,11 @@
                     <h1>Output</h1>
                     <hr/>
                 </div>
-                <h2 id="company_name_txt" class="text-center"></h2>
-                <h3 id="ac_number_txt" class="text-center"></h3>
-                <h4 id="date_txt" class="text-center"></h4>
+                <h3 id="company_name_txt" class="text-center"></h3>
+                <h4 id="ac_number_txt" class="text-center"></h4>
+                <h5 id="date_txt" class="text-center"></h5>
                 <hr/>
-                <div class="fs-3">
+                <div class="">
                     <div class="mb-2">&#36;<span id="tt_amount_txt"></span> x <span id="tt_clean_rate_txt"></span>&#x09F3; = <span id="tt_amount_x_clean_rate_txt"></span>&#x09F3;</div>
                     <div class="mb-2">Source Tax (<span id="source_tax_percentage_txt"></span>%) = <span id="source_tax_amount_txt"></span>&#x09F3;</div>
                     <div class="mb-2">Commission = <span id="commission_txt"></span>&#x09F3;</div>
@@ -135,7 +153,11 @@
                     <div class="mb-2"><span id="fund_1_percentage_txt"></span>% Fund = <span id="fund_1_amount_txt"></span>&#x09F3;</div>
                     <div class="mb-2"><span id="fund_2_percentage_txt"></span>% Fund = <span id="fund_2_amount_txt"></span>&#x09F3;</div>
                     <div class="mb-2">Exchange gain = <span id="exchange_gain_txt"></span>&#x09F3;</div>
-                    <div class="mb-2">A/C = <span id="ac_amount_txt"></span>&#x09F3;</div>
+                    <div class="mb-2">A/C = <span id="ac_amount_txt" class="fw-bold"></span>&#x09F3;</div>
+                    <hr />
+                    <div class="mb-2">TF = <span id="tf_number_txt"></span></div>
+                    <div class="mb-2">FTT = <span id="ftt_number_txt"></span></div>
+                    <div class="mb-2">FE = <span id="fe_number_txt"></span></div>
                 </div>
                 <div class="print-hide">
                     <a href="javascript:" onclick="window.print()" class="btn btn-success">Print</a>
@@ -168,6 +190,9 @@
         let $vat = $('#vat');
         let $fund_1_percentage = $('#fund_1_percentage');
         let $fund_2_percentage = $('#fund_2_percentage');
+        let $tf_number = $('#tf_number');
+        let $ftt_number = $('#ftt_number');
+        let $fe_number = $('#fe_number');
 
 
         let $company_name_txt = $('#company_name_txt');
@@ -186,6 +211,9 @@
         let $fund_2_amount_txt = $('#fund_2_amount_txt');
         let $exchange_gain_txt = $('#exchange_gain_txt');
         let $ac_amount_txt = $('#ac_amount_txt');
+        let $tf_number_txt = $('#tf_number_txt');
+        let $ftt_number_txt = $('#ftt_number_txt');
+        let $fe_number_txt = $('#fe_number_txt');
 
         let tt_amount = null;
         let tt_clean_rate = null;
@@ -207,7 +235,30 @@
 
         $('input').on('keyup change', function(){ calculate(); });
         $('#recalculate').on('click', function(){ calculate(); });
+        $('#config_form').on('reset', function(){ resetCalculation(); });
 
+        function resetCalculation(){
+            $company_name_txt.text('<company name>');
+            $ac_number_txt.text('<account number>');
+            $tt_amount_txt.text('');
+            $tt_clean_rate_txt.text('');
+
+            $tt_amount_x_clean_rate_txt.text('');
+            $source_tax_percentage_txt.text('');
+            $source_tax_amount_txt.text('');
+            $commission_txt.text('');
+            $vat_txt.text('');
+            $fund_1_percentage_txt.text('');
+            $fund_1_amount_txt.text('');
+            $fund_2_percentage_txt.text('');
+            $fund_2_amount_txt.text('');
+            $exchange_gain_txt.text('');
+            $ac_amount_txt.text('');
+
+            $tf_number_txt.text('');
+            $ftt_number_txt.text('');
+            $fe_number_txt.text('');
+        }
         function calculate(){
             tt_amount = parseFloat($tt_amount.val());
             tt_clean_rate = parseFloat($tt_clean_rate.val());
@@ -218,8 +269,8 @@
             fund_1_percentage = parseFloat($fund_1_percentage.val());
             fund_2_percentage = parseFloat($fund_2_percentage.val());
 
-            $company_name_txt.text($company_name.val());
-            $ac_number_txt.text($account_number.val());
+            $company_name_txt.text($company_name.val().length ? $company_name.val() : '<company name>');
+            $ac_number_txt.text($account_number.val().length ? $account_number.val() : '<account number>');
             $tt_amount_txt.text($tt_amount.val());
             $tt_clean_rate_txt.text($tt_clean_rate.val());
 
@@ -252,6 +303,10 @@
             $fund_2_amount_txt.text(fund_2_amount);
             $exchange_gain_txt.text(exchange_gain);
             $ac_amount_txt.text(ac_amount);
+
+            $tf_number_txt.text($tf_number.val());
+            $ftt_number_txt.text($ftt_number.val());
+            $fe_number_txt.text($fe_number.val());
         }
     </script>
 </body>
