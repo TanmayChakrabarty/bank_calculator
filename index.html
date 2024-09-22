@@ -43,7 +43,7 @@
                         <div class="col-sm-6">
                             <div class="input-group">
                                 <span class="input-group-text">&#36;</span>
-                                <input type="text" class="form-control" id="tt_amount" placeholder=""/>
+                                <input type="text" class="form-control calculate_input" id="tt_amount" placeholder=""/>
                             </div>
                         </div>
                     </div>
@@ -52,7 +52,7 @@
                         <div class="col-sm-6">
                             <div class="input-group">
                                 <span class="input-group-text">&#x09F3;</span>
-                                <input type="text" class="form-control" id="tt_clean_rate" placeholder=""/>
+                                <input type="text" class="form-control calculate_input" id="tt_clean_rate" placeholder=""/>
                             </div>
                         </div>
                     </div>
@@ -61,7 +61,7 @@
                         <div class="col-sm-6">
                             <div class="input-group">
                                 <span class="input-group-text">&#x09F3;</span>
-                                <input type="text" class="form-control" id="tt_doc_rate" placeholder=""/>
+                                <input type="text" class="form-control calculate_input" id="tt_doc_rate" placeholder=""/>
                             </div>
                         </div>
                     </div>
@@ -70,7 +70,7 @@
                         <div class="col-sm-6">
                             <div class="input-group">
                                 <span class="input-group-text">%</span>
-                                <input type="text" class="form-control" id="source_tax_percentage" placeholder="" value="1"/>
+                                <input type="text" class="form-control calculate_input" id="source_tax_percentage" placeholder="" value="1"/>
                             </div>
                         </div>
                     </div>
@@ -79,7 +79,7 @@
                         <div class="col-sm-6">
                             <div class="input-group">
                                 <span class="input-group-text">&#x09F3;</span>
-                                <input type="text" class="form-control" id="commission_amount" placeholder="" value="500"/>
+                                <input type="text" class="form-control calculate_input" id="commission_amount" placeholder="" value="500"/>
                             </div>
                         </div>
                     </div>
@@ -88,7 +88,7 @@
                         <div class="col-sm-6">
                             <div class="input-group">
                                 <span class="input-group-text">&#x09F3;</span>
-                                <input type="text" class="form-control" id="vat" placeholder="" value="75"/>
+                                <input type="text" class="form-control calculate_input" id="vat" placeholder="" value="75"/>
                             </div>
                         </div>
                     </div>
@@ -97,7 +97,7 @@
                         <div class="col-sm-6">
                             <div class="input-group">
                                 <span class="input-group-text">%</span>
-                                <input type="text" class="form-control" id="fund_1_percentage" placeholder="" value=".03"/>
+                                <input type="text" class="form-control calculate_input" id="fund_1_percentage" placeholder="" value=".03"/>
                             </div>
                         </div>
                     </div>
@@ -106,7 +106,7 @@
                         <div class="col-sm-6">
                             <div class="input-group">
                                 <span class="input-group-text">%</span>
-                                <input type="text" class="form-control" id="fund_2_percentage" placeholder="" value="3"/>
+                                <input type="text" class="form-control calculate_input" id="fund_2_percentage" placeholder="" value="3"/>
                             </div>
                         </div>
                     </div>
@@ -233,9 +233,15 @@
 
         $date_txt.text(formatDate('dd-mm-yyyy'));
 
-        $('input').on('keyup change', function(){ calculate(); });
+        $('.calculate_input').on('keyup change', function(){ calculate(); });
         $('#recalculate').on('click', function(){ calculate(); });
         $('#config_form').on('reset', function(){ resetCalculation(); });
+
+        $company_name.on('keyup change', function(){ $company_name_txt.text($company_name.val().length ? $company_name.val() : '<company name>'); });
+        $account_number.on('keyup change', function(){ $ac_number_txt.text($account_number.val().length ? $account_number.val() : '<account number>'); });
+        $tf_number.on('keyup change', function(){ $tf_number_txt.text($tf_number.val()); });
+        $ftt_number.on('keyup change', function(){ $ftt_number_txt.text($ftt_number.val()); });
+        $fe_number.on('keyup change', function(){ $fe_number_txt.text($fe_number.val()); });
 
         function mathRoundTo2(number){ return Math.round(number * 100) / 100; }
         function resetCalculation(){
@@ -270,8 +276,6 @@
             fund_1_percentage = parseFloat($fund_1_percentage.val());
             fund_2_percentage = parseFloat($fund_2_percentage.val());
 
-            $company_name_txt.text($company_name.val().length ? $company_name.val() : '<company name>');
-            $ac_number_txt.text($account_number.val().length ? $account_number.val() : '<account number>');
             $tt_amount_txt.text($tt_amount.val().toLocaleString('en-US'));
             $tt_clean_rate_txt.text($tt_clean_rate.val().toLocaleString('en-US'));
 
@@ -304,11 +308,8 @@
             $fund_2_amount_txt.text(fund_2_amount.toLocaleString('en-US'));
             $exchange_gain_txt.text(exchange_gain.toLocaleString('en-US'));
             $ac_amount_txt.text(ac_amount.toLocaleString('en-US'));
-
-            $tf_number_txt.text($tf_number.val());
-            $ftt_number_txt.text($ftt_number.val());
-            $fe_number_txt.text($fe_number.val());
         }
+
     </script>
 </body>
 </html>
